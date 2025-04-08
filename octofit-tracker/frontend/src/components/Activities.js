@@ -4,10 +4,19 @@ function Activities() {
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
-    fetch('https://OctoFit-App-codespace-8000.app.github.dev/api/activities/')
+    fetch('https://super-duper-space-memory-4rqp6pwg6xh979-8000.app.github.dev/api/activities/')
       .then(response => response.json())
-      .then(data => setActivities(data));
+      .then(data => {
+        console.log('Activities data:', data); // For debugging
+        setActivities(data);
+      })
+      .catch(error => console.error('Error fetching activities:', error));
   }, []);
+
+  const formatDuration = (duration) => {
+    if (!duration) return '';
+    return duration;
+  };
 
   return (
     <div>
@@ -15,17 +24,22 @@ function Activities() {
       <table className="table table-striped">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Description</th>
+            <th>Activity Type</th>
+            <th>Duration</th>
+            <th>User</th>
           </tr>
         </thead>
         <tbody>
-          {activities.map(activity => (
-            <tr key={activity.id}>
-              <td>{activity.name}</td>
-              <td>{activity.description}</td>
-            </tr>
-          ))}
+          {activities.map(activity => {
+            console.log('Activity:', activity); // For debugging
+            return (
+              <tr key={activity._id}>
+                <td>{activity.activity_type}</td>
+                <td>{formatDuration(activity.duration)}</td>
+                <td>{activity.user ? activity.user.username : 'Unknown'}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

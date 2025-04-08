@@ -4,9 +4,10 @@ function Users() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('https://OctoFit-App-codespace-8000.app.github.dev/api/users/')
+    fetch('https://super-duper-space-memory-4rqp6pwg6xh979-8000.app.github.dev/api/users/')
       .then(response => response.json())
-      .then(data => setUsers(data));
+      .then(data => setUsers(data))
+      .catch(error => console.error('Error fetching users:', error));
   }, []);
 
   return (
