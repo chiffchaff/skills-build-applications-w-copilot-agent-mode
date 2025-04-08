@@ -25,7 +25,8 @@ SECRET_KEY = "django-insecure-(+(x^q@70os-t9f2yba2j7v@-#aqzpe9ho-@#(_yh7adk1-z6l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+# Updated ALLOWED_HOSTS to include the correct codespace name
+ALLOWED_HOSTS = ['localhost', 'OctoFit-App-codespace-8000.app.github.dev']
 
 
 # Application definition
