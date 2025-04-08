@@ -4,9 +4,10 @@ function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState([]);
 
   useEffect(() => {
-    fetch('https://OctoFit-App-codespace-8000.app.github.dev/api/leaderboard/')
+    fetch('https://super-duper-space-memory-4rqp6pwg6xh979-8000.app.github.dev/api/leaderboard/')
       .then(response => response.json())
-      .then(data => setLeaderboard(data));
+      .then(data => setLeaderboard(data))
+      .catch(error => console.error('Error fetching leaderboard:', error));
   }, []);
 
   return (
@@ -21,8 +22,8 @@ function Leaderboard() {
         </thead>
         <tbody>
           {leaderboard.map(entry => (
-            <tr key={entry.id}>
-              <td>{entry.username}</td>
+            <tr key={entry._id}>
+              <td>{entry.user.username}</td>
               <td>{entry.score}</td>
             </tr>
           ))}

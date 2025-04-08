@@ -4,9 +4,10 @@ function Workouts() {
   const [workouts, setWorkouts] = useState([]);
 
   useEffect(() => {
-    fetch('https://OctoFit-App-codespace-8000.app.github.dev/api/workouts/')
+    fetch('https://super-duper-space-memory-4rqp6pwg6xh979-8000.app.github.dev/api/workouts/')
       .then(response => response.json())
-      .then(data => setWorkouts(data));
+      .then(data => setWorkouts(data))
+      .catch(error => console.error('Error fetching workouts:', error));
   }, []);
 
   return (

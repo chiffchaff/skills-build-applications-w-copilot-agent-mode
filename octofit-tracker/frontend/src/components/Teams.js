@@ -4,9 +4,10 @@ function Teams() {
   const [teams, setTeams] = useState([]);
 
   useEffect(() => {
-    fetch('https://OctoFit-App-codespace-8000.app.github.dev/api/teams/')
+    fetch('https://super-duper-space-memory-4rqp6pwg6xh979-8000.app.github.dev/api/teams/')
       .then(response => response.json())
-      .then(data => setTeams(data));
+      .then(data => setTeams(data))
+      .catch(error => console.error('Error fetching teams:', error));
   }, []);
 
   return (
@@ -21,9 +22,9 @@ function Teams() {
         </thead>
         <tbody>
           {teams.map(team => (
-            <tr key={team.id}>
+            <tr key={team._id}>
               <td>{team.name}</td>
-              <td>{team.members.join(', ')}</td>
+              <td>{team.members.map(member => member.username).join(', ')}</td>
             </tr>
           ))}
         </tbody>
